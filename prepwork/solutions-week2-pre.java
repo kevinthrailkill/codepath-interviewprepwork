@@ -1,6 +1,42 @@
 //Hashing
 
 
+//longest
+
+public class Solution {
+	public int lengthOfLongestSubstring(String s) {
+	    Map<Character,Integer> map = new HashMap<Character,Integer>();
+        int length = 0;
+        int maxLength = 0;
+        int currStartPos = -1;
+        for(int i=0;i<s.length();i++){
+            char c = s.charAt(i);
+            if(map.get(c) == null){
+                map.put(c,i);
+            }else {
+                int earlierPos = map.get(c);
+                map.put(c,i);
+                if(length>maxLength){
+                    maxLength = length;
+                }
+                if(earlierPos >= currStartPos){
+                    length = i-earlierPos;
+                    currStartPos = earlierPos+1;
+                    continue;
+                }
+                
+                
+            }
+            length++;
+        }
+        if(length>maxLength){
+            maxLength = length;
+        }
+        return maxLength;
+	    
+	}
+}
+
 //2 Sum
 
 public class Solution {
